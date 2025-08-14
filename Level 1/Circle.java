@@ -1,28 +1,31 @@
-public class Circle {
+// File: Circle.java
+
+class Circle {
     double radius;
 
+    // Default constructor that chains to the parameterized constructor
+    public Circle() {
+        this(1.0);
+    }
+
+    // Parameterized constructor
     public Circle(double radius) {
         this.radius = radius;
     }
 
     public double calculateArea() {
-        return Math.PI * (this.radius * this.radius);
-    }
-
-    public double calculateCircumference() {
-        return 2 * Math.PI * this.radius;
-    }
-
-    public void displayDetails() {
-        double area = this.calculateArea();
-        double circumference = this.calculateCircumference();
-        System.out.println("Circle with Radius: " + this.radius);
-        System.out.printf("Area: %.2f\n", area);
-        System.out.printf("Circumference: %.2f\n", circumference);
+        return Math.PI * radius * radius;
     }
 
     public static void main(String[] args) {
-        Circle circle1 = new Circle(5);
-        circle1.displayDetails();
+        // Using the default constructor
+        Circle circle1 = new Circle();
+        System.out.println("Circle 1 area (radius=" + circle1.radius + "): " + String.format("%.2f", circle1.calculateArea()));
+
+        System.out.println();
+
+        // Using the parameterized constructor
+        Circle circle2 = new Circle(5.0);
+        System.out.println("Circle 2 area (radius=" + circle2.radius + "): " + String.format("%.2f", circle2.calculateArea()));
     }
 }
